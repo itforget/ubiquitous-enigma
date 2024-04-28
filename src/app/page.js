@@ -31,7 +31,7 @@ export default function Home() {
       <button className="absolute top-0 right-0 p-3" onClick={toggleDarkMode}>
       {darkMode ? <Moon size={30} /> : <Sun size={30} />}
       </button>
-      <div className={`flex items-center justify-center flex-col ${handleClick ? "hidden" : ""}`}>
+      <div className={`flex items-center justify-center flex-col gap-5 ${handleClick ? "hidden" : ""}`}>
         <p className="text-3xl font-bold">Pedro</p>
         <ArrowDown size={30} />
         <a className="cursor-pointer" onClick={() => setClick(true)}>
@@ -43,7 +43,7 @@ export default function Home() {
         <video ref={videoRef} className={handleClick ? "rounded-full" : "rounded-full hidden"} width="620" height="620" style={{ clipPath: "circle()" }}>
             <source src="/pedro.mp4" type="video/mp4" />
         </video>
-        <button className={`text-2xl font-bold ${handleClick ? "" : "hidden"}`} onClick={() => setClick(false)} type="button">Reset</button>
+        <button className={`text-2xl font-bold rounded-2xl p-3 ${handleClick ? "" : "hidden"}`} onClick={() => setClick(false)} type="button">RESET</button>
       </div>
     </main>
   );
