@@ -1,21 +1,26 @@
 'use client'
 import { useRef } from "react";
-import { ArrowDown, Cat } from "lucide-react";
+import { ArrowDown, Cat, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 
-
 export default function Home() {
-  const videoRef = useRef();
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
+  const videoRef = useRef();
   const [handleClick, setClick] = useState(false);
 
   if (handleClick) {
     const video = videoRef.current;
     video.play();
   }
-
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className={`flex min-h-screen flex-col items-center p-24 ${darkMode ? "bg-gray-900 text-white" : "bg-[var(--foreground-rgb: 0, 0, 0, --background-start-rgb: 214, 219, 220 ,--background-end-rgb: 255, 255, 255)] text-black"}`}>
+      <button className="absolute top-0 right-0 p-3" onClick={toggleDarkMode}>
+      {darkMode ? <Moon size={30} /> : <Sun size={30} />}
+      </button>
       <div className={`flex items-center justify-center flex-col ${handleClick ? "hidden" : ""}`}>
         <p className="text-3xl font-bold">Pedro</p>
         <ArrowDown size={30} />
@@ -30,3 +35,5 @@ export default function Home() {
     </main>
   );
 }
+
+
